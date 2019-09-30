@@ -21,7 +21,7 @@ require (
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/pquerna/otp v1.2.0
 	github.com/terraform-providers/terraform-provider-tls v2.1.0+incompatible
-	gopkg.in/yaml.v2 v2.2.2
+	gopkg.in/yaml.v2 v2.2.3
 	k8s.io/apimachinery v0.0.0-20190204010555-a98ff070d70e // indirect
 	k8s.io/client-go v10.0.0+incompatible // indirect
 	k8s.io/klog v0.1.0 // indirect
