@@ -53,6 +53,11 @@ func resourceAwsCloudWatchEventRule() *schema.Resource {
 					return json
 				},
 			},
+			"event_bus_name": {
+				Type:         schema.TypeString,
+				Optional:     true,
+				ValidateFunc: validation.StringLenBetween(0, 256),
+			},
 			"description": {
 				Type:         schema.TypeString,
 				Optional:     true,
@@ -269,6 +274,9 @@ func buildPutRuleInputStruct(d *schema.ResourceData, name string) (*events.PutRu
 	}
 	if v, ok := d.GetOk("schedule_expression"); ok {
 		input.ScheduleExpression = aws.String(v.(string))
+	}
+	if v, ok := d.GetOk("event_bus_name"); ok {
+		input.EventBusName = aws.String(v.(string))
 	}
 
 	input.State = aws.String(getStringStateFromBoolean(d.Get("is_enabled").(bool)))

@@ -196,6 +196,7 @@ func TestAccAWSCloudWatchEventRule_full(t *testing.T) {
 					resource.TestCheckResourceAttr("aws_cloudwatch_event_rule.moobar", "name", "tf-acc-cw-event-rule-full"),
 					resource.TestCheckResourceAttr("aws_cloudwatch_event_rule.moobar", "schedule_expression", "rate(5 minutes)"),
 					resource.TestCheckResourceAttr("aws_cloudwatch_event_rule.moobar", "event_pattern", "{\"source\":[\"aws.ec2\"]}"),
+					resource.TestCheckResourceAttr("aws_cloudwatch_event_rule.moobar", "event_bus_name", "aws.partner/foo.com/testname"),
 					resource.TestCheckResourceAttr("aws_cloudwatch_event_rule.moobar", "description", "He's not dead, he's just resting!"),
 					resource.TestCheckResourceAttr("aws_cloudwatch_event_rule.moobar", "role_arn", ""),
 					testAccCheckCloudWatchEventRuleEnabled("aws_cloudwatch_event_rule.moobar", "DISABLED", &rule),
@@ -446,6 +447,7 @@ resource "aws_cloudwatch_event_rule" "moobar" {
 	event_pattern = <<PATTERN
 { "source": ["aws.ec2"] }
 PATTERN
+	event_bus_name = "aws.partner/foo.com/testname"
 	description = "He's not dead, he's just resting!"
 	is_enabled = false
 	tags = {
